@@ -11,4 +11,4 @@ class HeroSerializer(serializers.HyperlinkedModelSerializer):
 class TaskSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Task
-        fields = ('name', 'status')        
+        fields = '__all__'     
