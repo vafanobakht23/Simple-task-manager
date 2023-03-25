@@ -13,6 +13,8 @@ def tasksList (request):
 @api_view(['GET'])
 def taskDetail (request,pk):
     task = Task.objects.get(id=pk)
+    if(task == None):
+        return Response({"status": "fail", "message": f"Note with Id: {pk} not found"}, status=status.HTTP_404_NOT_FOUND)
     serializer  = TaskSerializer(task,many=False)
     return Response(serializer.data)
 
