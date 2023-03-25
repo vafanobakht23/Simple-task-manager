@@ -9,3 +9,9 @@ def tasksList (request):
     tasks = Task.objects.all()
     serializer  = HeroSerializer(tasks,many=True)
     return Response(serializer.data)
+
+@api_view(['GET'])
+def taskDetail (request,pk):
+    task = Task.objects.get(id=pk)
+    serializer  = HeroSerializer(task,many=False)
+    return Response(serializer.data)
